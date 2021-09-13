@@ -1,46 +1,61 @@
-import React, { useState } from "react"
+import React, { PropsWithChildren, ReactNode, useState } from "react"
+import { isJsxElement } from "typescript";
+import { GlobalStyle } from "../../utils/global-style";
+import { rs, bg, clr } from "../../utils/style";
 
-export interface TabsProps<T, K extends keyof T> {
-    items: T[]
-    displayKey: K
+export interface TabsProps {
     color?: string
     background?: string
-    onTabChange?: (value: T, index: number) => void
+    onTabChange?: (value: string, index: number) => void
 }
 
-function Tabs<T, K extends keyof T>(props: TabsProps<T, K>) {
-    const { items, displayKey, onTabChange } = props;
-    const [current, setCurrent] = useState(0)
-    return <div style={{
-        color: props.color ?? 'black',
-        background: props.background ?? 'white',
-    }} className="flex1 select-none">
-        {items.map((item, index) => (
-            <TabItem
-                key={index}
-                active={current === index} 
-                onClick={ (active) => {
-                    if (!active) {
-                        onTabChange?.(item, index);
-                        setCurrent(index);
-                        console.log(index)
-                    }
-                }}
-            >
-                {item[displayKey]}
-            </TabItem>
-        ))}
+const Tabs: React.FC<TabsProps> & { Item: React.FC<TabsItemProp> } = (props) => {
+    // const { onTabChange } = props;
+    // const [current, setCurrent] = useState(0)
+
+	React.Children.map(props.children, (node) => {
+		if (React.isValidElement(node) && node.type === TabsItem) {
+			let props = node.props as TabsItemProp
+			props.tab
+		}
+	})
+
+
+	const style = rs.create_style(
+		clr(props.color ?? 'black'),
+		bg(props.background ?? 'white'),
+		GlobalStyle.flex1,
+		GlobalStyle.selectNone
+	);
+
+    return <div style={style}>
+		{props.children}
     </div>
 }
 
-interface TabItemProp {
-    active: boolean
+
+
+interface TabsItemProp {
+    tab: ReactNode
+	key: string
     onClick?: (active: boolean) => void
 }
 
-const TabItem: React.FC<TabItemProp> = function (props) {
-    const colorBg = props.active ? `bg-blue clr-dark` : `bg-white clr-gray`;
-    return <div className={`${colorBg}`} onClick={ () => props.onClick?.(props.active) }>{props.children}</div>
+const TabsItem: React.FC<TabsItemProp> = function (props) {
+	const style = rs.create_style(
+		bg(true ? 'blue' : 'white'),
+		clr(true ? 'white' : 'gray'),
+		{
+			borderRadius: rs.unit_format('0.5 0.5'),
+			padding: rs.unit_format('0.2 1')
+		}
+	);
+
+    return <div style={style} onClick={ () => props.onClick?.(false) }>{props.children}</div>
 }
+
+Tabs.Item = TabsItem
+Tabs.displayName = "Tabs"
+TabsItem.displayName = "TabsItem"
 
 export default Tabs
