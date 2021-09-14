@@ -28,6 +28,7 @@
     "docz:dev": "docz dev",
     "docz:build": "docz build",
     "docz:serve": "docz build && docz serve",
+	"docz:clear": "rimraf ./.docz/.cache/caches/gatsby-plugin-mdx/mdx-scopes-dir/",
     "dev": "docz dev",
     "build": "yarn clean && yarn build-ts && yarn build-css",
     "build-ts": "tsc -p tsconfig.build.json",
