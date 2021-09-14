@@ -4,13 +4,18 @@
 }
 
 .flex1 {
-    @extend .flex;
+    display: flex;
     align-items: center;
 }
 
 .flex2 {
-    @extend .flex1;
+    display: flex;
     justify-content: center;
+}
+
+.flex3 {
+	@extend .flex2;
+    align-items: center;
 }
 
 //======== position ========
@@ -31,3 +36,7 @@
     user-select: none;
 }
 
+//======== animation ========
+.ani {
+	transition: all .3s;
+}
