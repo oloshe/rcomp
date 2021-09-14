@@ -1,7 +1,49 @@
 .rc__btn{
-	background: blue;
-	color: white;
-	&:hover {
-		background-color: orange;
+	font-weight: 400;
+	border-radius: 2px;
+	padding: 4px 12px;
+	margin: 2px 5px;
+	display: inline-block;
+	user-select: none;
+	cursor: pointer;
+	font-size: 14px;
+
+	&.normal {
+		background: var(--blue);
+		color: var(--white);
+		&:hover {
+			background-color: var(--orange);
+		}
+		&.disable {
+			pointer-events: none;
+			opacity: 0.6 !important;
+		}
+		&:active {
+			filter: brightness(0.9);
+		}
+	}
+
+	&.calm {
+		color: var(--dark);
+		padding: 4px;
+		&:hover {
+			font-weight: 200;
+			color: var(--blue);
+		}
+		&.disable {
+			pointer-events: none;
+		}
+		&[data-ani="true"] {
+			animation: button_clam_ani 1s forwards;
+			@keyframes button_clam_ani {
+				20% {
+					transform: scale(0.5);
+				}
+			}
+		}
+	}
+
+	&.crazy {
+		text-overflow: unset;
 	}
 }

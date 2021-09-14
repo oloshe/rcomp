@@ -4,6 +4,7 @@
 
 import { Playground, Props } from 'docz'
 import Button from './button'
+import "../../index.scss"
 
 # Properties
 
@@ -12,6 +13,9 @@ import Button from './button'
 ## Basic usage
 
 <Playground>
-	<Button>按钮1</Button>
-	<Button disable={false}>按钮2</Button>
+	<Button>Normal Mode</Button>
+	<Button disable={true}>Normal Mode</Button>
+	<br/>
+	<Button mode="calm">Calm Mode</Button>
+	<Button mode="calm" disable={true}>Calm Mode</Button>
 </Playground>
