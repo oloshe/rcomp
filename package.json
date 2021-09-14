@@ -28,9 +28,10 @@
     "docz:dev": "docz dev",
     "docz:build": "docz build",
     "docz:serve": "docz build && docz serve",
+    "dev": "docz dev",
     "build": "yarn clean && yarn build-ts && yarn build-css",
     "build-ts": "tsc -p tsconfig.build.json",
-    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
+    "build-css": "node-sass ./src/index.scss ./dist/index.css",
     "clean": "rimraf ./dist",
     "test:nowatch": "cross-env CI=true react-scripts test",
     "prepublish": "npm run test:nowatch && npm run build"

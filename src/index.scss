@@ -1,0 +1,10 @@
+@import "./styles/var.scss";
+@import "./styles/global.scss";
+ 
+// 引入所有组件的scss样式，在组件中不直接import
+// 开发中直接在mdx中import对应的scss
+// 构建时直接打包成index.css
+
+// TODO 按需构建，按需引入
+@import "./components/Tabs/tabs.scss";
+@import "./components/Button/button.scss";

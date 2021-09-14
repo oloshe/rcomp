@@ -1,5 +1,4 @@
-@import "./import.scss";
-
+//======== display ========
 .flex {
     display: flex;
 }
@@ -14,16 +13,18 @@
     justify-content: center;
 }
 
-.border-box {
-    box-sizing: border-box;
-}
-
+//======== position ========
 .pa {
     position: absolute;
 }
 
 .pr {
     position: relative;
+}
+
+
+.border-box {
+    box-sizing: border-box;
 }
 
 .select-none {

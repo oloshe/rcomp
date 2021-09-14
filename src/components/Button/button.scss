@@ -1,0 +1,7 @@
+.rc__btn{
+	background: blue;
+	color: white;
+	&:hover {
+		background-color: orange;
+	}
+}
